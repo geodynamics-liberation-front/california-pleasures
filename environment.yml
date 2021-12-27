@@ -1,17 +1,25 @@
-name: /home/robert/work/california-pleasures/env
+name: null
 channels:
+  - anaconda
   - conda-forge
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=1_gnu
+  - affine=2.3.0=py_0
+  - attrs=21.2.0=pyhd8ed1ab_0
+  - beautifulsoup4=4.9.3=pyhb0f4dca_0
   - blosc=1.21.0=h9c3ff4c_0
   - boost-cpp=1.74.0=h359cf19_5
   - bzip2=1.0.8=h7f98852_4
   - c-ares=1.18.1=h7f98852_0
-  - ca-certificates=2021.10.26=h06a4308_2
+  - ca-certificates=2020.10.14=0
   - cairo=1.16.0=ha00ac49_1009
+  - certifi=2021.10.8=py310hff52083_1
   - cfitsio=4.0.0=h9a35b8e_0
+  - click=8.0.3=py310hff52083_1
+  - click-plugins=1.1.1=py_0
+  - cligj=0.7.2=pyhd8ed1ab_1
   - curl=7.80.0=h494985f_1
   - expat=2.4.2=h9c3ff4c_0
   - font-ttf-dejavu-sans-mono=2.37=hab24e00_0
@@ -76,21 +84,31 @@ dependencies:
   - ncurses=6.2=h58526e2_4
   - nspr=4.32=h9c3ff4c_1
   - nss=3.73=hb5efdd6_0
+  - numpy=1.21.5=py310h647a097_0
   - openjpeg=2.4.0=hb52868f_1
   - openssl=3.0.0=h7f98852_2
   - pcre=8.45=h9c3ff4c_0
+  - pip=21.3.1=pyhd8ed1ab_0
   - pixman=0.40.0=h36c2ea0_0
   - poppler=21.11.0=ha39eefc_0
   - poppler-data=0.4.11=hd8ed1ab_0
   - postgresql=14.1=hce44dc1_1
   - proj=8.2.0=h277dcde_0
   - pthread-stubs=0.4=h36c2ea0_1001
+  - pyparsing=3.0.6=pyhd8ed1ab_0
+  - python=3.10.1=h543edf9_2_cpython
+  - python_abi=3.10=2_cp310
+  - rasterio=1.2.10=py310h401d7d5_3
   - readline=8.1=h46c0cb4_0
+  - setuptools=60.1.0=py310hff52083_0
+  - snuggs=1.4.7=py_0
+  - soupsieve=2.0.1=py_0
   - sqlite=3.37.0=h9cd32fc_0
   - tiledb=2.5.3=hf3d3071_0
   - tk=8.6.11=h27826a3_1
   - tzcode=2021e=h7f98852_0
   - tzdata=2021e=he74cb21_0
+  - wheel=0.37.1=pyhd8ed1ab_0
   - xerces-c=3.2.3=h8ce2273_4
   - xorg-kbproto=1.0.7=h7f98852_1002
   - xorg-libice=1.0.10=h7f98852_0

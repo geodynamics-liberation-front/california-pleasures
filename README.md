@@ -9,7 +9,7 @@ Download the border and elevation data.  These scripts download data for Califor
 This might take some time depending on your Internet speed
 ```
 ./download.sh
-cd geotif 
+cd geotifs 
 ./download.sh
 cd ..
 ```

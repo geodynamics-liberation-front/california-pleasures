@@ -35,9 +35,9 @@ def calculateIntersections(lats):
     lons = [[] for i in range(lats.size)]
     for i in range(dem.CA_BORDER_LAT.size-1):
         for j, lat in enumerate(lats):
-            if ((lat > ca_border_lat[i] and lat < ca_border_lat[i+1]) or
-               (lat < ca_border_lat[i] and lat > ca_border_lat[i+1])):
-                lons[j].append(ca_border_lon[i])
+            if ((lat > dem.CA_BORDER_LAT[i] and lat < dem.CA_BORDER_LAT[i+1]) or
+               (lat < dem.CA_BORDER_LAT[i] and lat > dem.CA_BORDER_LAT[i+1])):
+                lons[j].append(dem.CA_BORDER_LON[i])
     return np.array([[min(values), max(values)] for values in lons])
 
 
@@ -69,14 +69,14 @@ getFrames.frames = None
 
 def getElev(lat, mask):
     print(f'getElev({lat},{mask})')
-    lon = np.linspace(frames_lon_min, frames_lon_max+1, num=lat_line_length)
-    elev = np.zeros(lat_line_length)
+    lon = np.linspace(dem.FRAMES_LON_MIN, dem.FRAMES_LON_MAX+1, num=LAT_LINE_LENGTH)
+    elev = np.zeros(LAT_LINE_LENGTH)
 
     frames = getFrames(lat)
     for dataset, band in frames:
-        m = lat_lon.match(dataset.name)
+        m = LAT_LON.match(dataset.name)
         frame_lon = int(m.group(2).replace('w', '-').replace('e', ''))
-        offset = (frame_lon - frames_lon_min)*frame_width
+        offset = (frame_lon - dem.FRAMES_LON_MIN)*dem.FRAME_WIDTH
         row, _ = dataset.index(
             (dataset.bounds.left+dataset.bounds.right)/2,
             lat
@@ -85,8 +85,8 @@ def getElev(lat, mask):
         e[e == -999999] = np.nan
         nans, x = nan_helper(e)
         e[nans] = np.interp(x(nans), x(~nans), e[~nans])
-        e = e*elevation_scale+lat
-        elev[offset:offset+frame_width] = e
+        e = e*ELEVATION_SCALE+lat
+        elev[offset:offset+dem.FRAME_WIDTH] = e
 
     elev[lon < mask[0]] = lat
     elev[lon > mask[1]] = lat
