@@ -135,3 +135,7 @@ dmypy.json
 *.kml
 *.tif
 *.npy
+
+# output 
+california_dem.py
+ca_pleasures.svg
