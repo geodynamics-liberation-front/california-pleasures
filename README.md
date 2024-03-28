@@ -1,5 +1,6 @@
 # california-pleasures
 Creates an image of California in the style of Joy Division's 'Unknown Pleasures' album cover.
+![output](ca_pleasures.png)
 
 ## Instructions
 Commands are issued from the project directory.
@@ -40,7 +41,7 @@ Generate the SVG
 
 ## Data Sources
 ### Elevation Data
-FROM USGS 3D Elevation Progamr
+FROM USGS 3D Elevation Program
 https://apps.nationalmap.gov/downloader/#/
 
 ### Borders

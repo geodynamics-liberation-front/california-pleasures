@@ -136,6 +136,9 @@ dmypy.json
 *.tif
 *.npy
 
+# Backups
+*.bak
+
 # output 
 california_dem.py
 ca_pleasures.svg
