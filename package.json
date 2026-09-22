@@ -1,0 +1,7 @@
+{
+  "name": "topographic-pleasures",
+  "private": true,
+  "type": "module",
+  "description": "Every US state drawn as Joy Division's Unknown Pleasures cover, from elevation data. No Node dependencies: package.json only marks the JavaScript as ES modules so tools/render.mjs can import the site's renderer.",
+  "license": "GPL-3.0"
+}

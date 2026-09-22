@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#000000">
+<title>Topographic Pleasures</title>
+<meta name="description" content="Every US state drawn in the style of Joy Division's Unknown Pleasures cover, from its real elevation data. Tune the drawing and download it as SVG or PDF.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="brand" href="#">Topographic Pleasures</a>
+  <p class="tagline">Fifty states drawn the way Joy Division's <em>Unknown Pleasures</em> cover drew a pulsar: one line per latitude, lifted by the land beneath it.</p>
+</header>
+
+<main id="gallery" class="gallery">
+  <svg id="map" class="map" role="img" aria-label="The United States drawn as horizontal lines; the state under the pointer rises to show its terrain"></svg>
+  <p id="caption" class="caption">Loading the map…</p>
+  <nav id="states" class="states" aria-label="All fifty states"></nav>
+</main>
+
+<main id="state" class="state" hidden>
+  <nav class="state-nav">
+    <a href="#" class="back">All states</a>
+    <span class="prev-next"><a id="prev" href="#">Previous</a><a id="next" href="#">Next</a></span>
+  </nav>
+  <h1 id="state-name">State</h1>
+  <p id="state-facts" class="facts"></p>
+  <div class="workbench">
+    <figure id="art" class="art" aria-live="polite"><p class="loading">Loading elevation data…</p></figure>
+    <form id="controls" class="controls" autocomplete="off">
+      <label>Lines <output for="lines" id="lines-out"></output><input type="range" name="lines" id="lines" min="8" max="200" step="1"></label>
+      <label>Relief <output for="relief" id="relief-out"></output><input type="range" name="relief" id="relief" min="0.5" max="20" step="0.5"></label>
+      <label>Detail <output for="detail" id="detail-out"></output><input type="range" name="detail" id="detail" min="40" max="4000" step="10"></label>
+      <label>Line width <output for="stroke" id="stroke-out"></output><input type="range" name="stroke" id="stroke" min="0.2" max="6" step="0.1"></label>
+      <label>Tails <output for="tails" id="tails-out"></output><input type="range" name="tails" id="tails" min="0" max="0.5" step="0.01"></label>
+      <label>Projection
+        <select name="projection" id="projection">
+          <option value="mercator">Mercator</option>
+          <option value="equirectangular">Equirectangular</option>
+        </select>
+      </label>
+      <div class="colours">
+        <label>Line colour <input type="color" name="line" id="line"></label>
+        <label>Background <input type="color" name="background" id="background"></label>
+      </div>
+      <div class="actions">
+        <button type="button" id="dl-svg">Download SVG</button>
+        <button type="button" id="dl-pdf">Download PDF</button>
+        <button type="button" id="copy-link" class="quiet">Copy link to these settings</button>
+        <button type="button" id="reset" class="quiet">Reset</button>
+      </div>
+      <p class="hint">The SVG is the drawing as shown. The PDF is one page, 35 cm wide, with the same vector lines.</p>
+    </form>
+  </div>
+</main>
+
+<footer class="credits">
+  <p>Elevation is the USGS/NGA <a href="https://www.usgs.gov/coastal-changes-and-impacts/gmted2010">GMTED2010</a> 30 arc-second grid; outlines are the US Census Bureau's 1:500,000 cartographic boundaries. Both are public domain. The lines are drawn from north to south and each one hides what lies behind it, as on Peter Saville's 1979 sleeve, which reproduced Harold Craft's plot of the pulsar CP 1919.</p>
+  <p>A <a href="https://therealglf.org/">Geodynamics Liberation Front</a> project. Source and build instructions on <a href="https://github.com/geodynamics-liberation-front/california-pleasures">GitHub</a>.</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
