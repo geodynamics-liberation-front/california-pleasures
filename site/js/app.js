@@ -71,13 +71,25 @@ async function buildMap() {
     highlight(s);
     return s;
   };
+  // Which kind of pointer last touched the map. The click event carries no pointerType in Safari,
+  // and on a touch screen the browser fires pointerleave between the finger lifting and the click,
+  // so neither the click nor the map's raised state can be trusted to tell a tap from a mouse click.
+  let pointer = 'mouse';
+  let tapped = -1;           // the state raised by the last tap on a touch screen
+  mapSvg.addEventListener('pointerdown', (e) => { pointer = e.pointerType || 'mouse'; });
   mapSvg.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') point(e); });
-  mapSvg.addEventListener('pointerleave', () => highlight(-1));
+  mapSvg.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') highlight(-1); });
   mapSvg.addEventListener('click', (e) => {
-    // with a mouse the state is already raised; on a touch screen the first tap raises, the second opens
-    const before = linesMap.active;
     const s = point(e);
-    if (s >= 0 && (e.pointerType === 'mouse' || s === before)) location.hash = `#${index.states[s].id}`;
+    if (s < 0) { tapped = -1; return; }
+    // with a mouse the state is already raised; on a touch screen the first tap raises, the second opens
+    if (pointer === 'mouse' || s === tapped) {
+      tapped = -1;
+      location.hash = `#${index.states[s].id}`;
+    } else {
+      tapped = s;
+      caption.textContent = `${index.states[s].name} – tap again to open it`;
+    }
   });
   // the list under the map raises states too, for hover and for keyboard focus
   const list = $('#states');
