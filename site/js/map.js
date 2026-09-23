@@ -125,9 +125,10 @@ export class LinesMap {
 
   // the state under a pointer, looking one line and one sample around it, or -1
   stateAt(clientX, clientY) {
-    const r = this.svg.getBoundingClientRect();
-    const x = (clientX - r.left) / r.width * this.map.width;
-    const y = (clientY - r.top) / r.height * this.map.height;
+    // the SVG's own transform, so letterboxing (a wide window where max-height applies) is accounted for
+    const ctm = this.svg.getScreenCTM();
+    if (!ctm) return -1;
+    const { x, y } = new DOMPoint(clientX, clientY).matrixTransform(ctm.inverse());
     const j = Math.floor(x / this.step), i = Math.floor(y / this.spacing);
     const { samples, lines, owner } = this.map;
     for (const [di, dj] of [[0, 0], [-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [-1, 1], [1, -1], [1, 1]]) {
